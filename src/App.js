@@ -48,6 +48,11 @@ function App() {
       const transcript = event.results[0][0].transcript;
       setQuery(transcript);
       setIsListening(false);
+
+      // Auto search
+      if (transcript.trim()) {
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(transcript)}`;
+      }
     };
 
     recognition.onend = () => setIsListening(false);
@@ -101,13 +106,13 @@ function App() {
               placeholder="Search Google or type a URL"
             />
             <FaMicrophone
-              className="text-gray-500 mr-3 cursor-pointer hover:text-red-500"
+              className={`text-gray-500 mr-3 cursor-pointer hover:text-red-500 ${isListening ? 'animate-pulse' : ''}`}
               onClick={startVoiceSearch}
             />
             <MdOutlineCenterFocusWeak className="text-gray-500 cursor-pointer" />
           </div>
 
-          {isListening && <p className="mt-2 text-blue-600 text-sm animate-pulse text-center">🎤 Listening...</p>}
+          {isListening && <p className="mt-2 text-blue-600 text-sm text-center animate-pulse">🎤 Listening...</p>}
 
           {filtered.length > 0 && (
             <ul className="absolute left-0 right-0 bg-white border border-gray-300 mt-2 rounded shadow z-10 max-h-60 overflow-y-auto">
