@@ -65,21 +65,30 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-white text-gray-800 font-sans overflow-x-hidden">
       {/* Top Navbar */}
-      <nav className="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 py-3 text-sm gap-y-2 sm:gap-y-0">
-        <div className="flex space-x-4 sm:space-x-6">
-          <a href="https://about.google/" className="hover:underline">About</a>
-          <a href="https://store.google.com/in/" className="hover:underline">Store</a>
-        </div>
-        <div className="flex items-center space-x-4 sm:space-x-6">
-          <a href="https://mail.google.com/" className="hover:underline">Gmail</a>
-          <a href="https://www.google.com/imghp" className="hover:underline">Images</a>
-          <a href="https://labs.google.com/search?source=hp" target="_blank" rel="noopener noreferrer" className="text-lg cursor-pointer">
-            <FaFlask />
-          </a>
-          <FaTh className="text-lg cursor-pointer" />
-          <img src={mahadev} alt="Profile" className="w-8 h-8 rounded-full cursor-pointer" />
-        </div>
-      </nav>
+  <nav className="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 py-3 text-sm gap-y-2 sm:gap-y-0">
+  {/* Left: About & Store (hidden on mobile) */}
+  <div className="hidden sm:flex space-x-4 sm:space-x-6">
+    <a href="https://about.google/" className="hover:underline">About</a>
+    <a href="https://store.google.com/in/" className="hover:underline">Store</a>
+  </div>
+
+  {/* Right: Gmail, Images, Icons */}
+  <div className="flex items-center space-x-4 sm:space-x-6">
+    {/* Gmail & Images (hidden on mobile) */}
+    <div className="hidden sm:flex space-x-4">
+      <a href="https://mail.google.com/" className="hover:underline">Gmail</a>
+      <a href="https://www.google.com/imghp" className="hover:underline">Images</a>
+    </div>
+
+    {/* Always visible icons */}
+    <a href="https://labs.google.com/search?source=hp" target="_blank" rel="noopener noreferrer" className="text-lg cursor-pointer">
+      <FaFlask />
+    </a>
+    <FaTh className="text-lg cursor-pointer" />
+    <img src={mahadev} alt="Profile" className="w-8 h-8 rounded-full cursor-pointer" />
+  </div>
+</nav>
+
 
       {/* Main Content */}
       <main className="flex flex-col items-center mt-16 sm:mt-24 px-4">
